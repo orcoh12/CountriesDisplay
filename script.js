@@ -17,21 +17,23 @@ renderCountry = function (data) {
   console.log(data);
   countriesContainer.insertAdjacentHTML('afterbegin', html);
 
-
   countriesContainer.style.opacity = 1;
 
 };
 
-const getCountryData = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      renderCountry(data[0]);
-      count++;
-    })
-}
+
+const getCountryData = async function (country) {
+  try {
+    const response = await fetch(`https://restcountries.com/v3.1/name/${country}`)
+
+    const data = await response.json();
+    renderCountry(data[0]);
+  }
+  catch (error) {
+    log.error(err);
+  }
+};
+
 btn.addEventListener('click', function () {
   let country = input.value;
   getCountryData(country);
