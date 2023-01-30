@@ -15,7 +15,8 @@ renderCountry = function (data) {
   </div>
 </article>`
   console.log(data);
-  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.insertAdjacentHTML('afterbegin', html);
+
 
   countriesContainer.style.opacity = 1;
 
