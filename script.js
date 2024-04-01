@@ -34,6 +34,15 @@ const getCountryData = async function (country) {
   }
 };
 
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter' || event.keyCode === 13) {
+    let country = input.value;
+    getCountryData(country);
+    input.value = '';
+      console.log('Enter key was pressed');
+  }
+});
+
 btn.addEventListener('click', function () {
   let country = input.value;
   getCountryData(country);
